@@ -39,7 +39,7 @@ class StudentDetailFragment : Fragment() {
     private fun updateUI(student: Student) {
         binding.txtId.setText(student.id)
         binding.txtNama.setText(student.name)
-        binding.txtBod.setText(student.dob)
+        binding.txtBod.setText(student.bod)
         binding.txtPhone.setText(student.phone)
     }
 }
