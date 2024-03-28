@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "name": "Mathematics",
+        "description": "Study of numbers, quantities, and shapes.",
+        "topics": ["Algebra", "Geometry", "Calculus"],
+        "resources": {
+            "textbooks": ["Algebra for Beginners", "Geometry Essentials"],
+            "onlineCourses": ["Calculus Fundamentals"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=1"
+    },
+    {
+        "id": 2,
+        "name": "Physics",
+        "description": "Study of matter, energy, and the fundamental forces of nature.",
+        "topics": ["Mechanics", "Thermodynamics", "Electromagnetism"],
+        "resources": {
+            "textbooks": ["Fundamentals of Mechanics", "Introduction to Thermodynamics"],
+            "onlineCourses": ["Electricity and Magnetism"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=2"
+    },
+    {
+        "id": 3,
+        "name": "Biology",
+        "description": "Study of living organisms and their interactions with each other and their environments.",
+        "topics": ["Cell Biology", "Genetics", "Ecology"],
+        "resources": {
+            "textbooks": ["Introduction to Cell Biology", "Genetics Explained"],
+            "onlineCourses": ["Ecology Fundamentals"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=3"
+    },
+    {
+        "id": 4,
+        "name": "History",
+        "description": "Study of past events, particularly human affairs.",
+        "topics": ["Ancient History", "Medieval History", "Modern History"],
+        "resources": {
+            "textbooks": ["Ancient Civilizations", "Medieval Europe"],
+            "onlineCourses": ["World War II History"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=4"
+    },
+    {
+        "id": 5,
+        "name": "Literature",
+        "description": "Study of written works, including fiction, non-fiction, poetry, and drama.",
+        "topics": ["Poetry Analysis", "Classic Novels", "Shakespearean Plays"],
+        "resources": {
+            "textbooks": ["Understanding Poetry", "Classic Literature Anthology"],
+            "onlineCourses": ["Shakespeare's Tragedies"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=5"
+    },
+    {
+        "id": 6,
+        "name": "Computer Science",
+        "description": "Study of computers and computational systems.",
+        "topics": ["Programming", "Algorithms", "Data Structures"],
+        "resources": {
+            "textbooks": ["Python Programming", "Introduction to Algorithms"],
+            "onlineCourses": ["Data Structures and Algorithms"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=6"
+    },
+    {
+        "id": 7,
+        "name": "Art",
+        "description": "Study of visual and performing arts.",
+        "topics": ["Painting", "Sculpture", "Music"],
+        "resources": {
+            "textbooks": ["Art History", "Sculpture Techniques"],
+            "onlineCourses": ["Introduction to Music Theory"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=7"
+    },
+    {
+        "id": 8,
+        "name": "Psychology",
+        "description": "Study of the mind and behavior.",
+        "topics": ["Cognitive Psychology", "Developmental Psychology", "Abnormal Psychology"],
+        "resources": {
+            "textbooks": ["Introduction to Psychology", "Child Development"],
+            "onlineCourses": ["Understanding Mental Illness"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=8"
+    },
+    {
+        "id": 9,
+        "name": "Chemistry",
+        "description": "Study of matter and the changes it undergoes.",
+        "topics": ["Organic Chemistry", "Inorganic Chemistry", "Physical Chemistry"],
+        "resources": {
+            "textbooks": ["Organic Chemistry Essentials", "Physical Chemistry Principles"],
+            "onlineCourses": ["Chemical Reactions and Equilibrium"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=9"
+    },
+    {
+        "id": 10,
+        "name": "Economics",
+        "description": "Study of production, distribution, and consumption of goods and services.",
+        "topics": ["Microeconomics", "Macroeconomics", "International Economics"],
+        "resources": {
+            "textbooks": ["Principles of Microeconomics", "Macroeconomics in Context"],
+            "onlineCourses": ["International Trade and Finance"]
+        },
+        "images": "https://loremflickr.com/320/240/subjects?lock=10"
+    }
+]
