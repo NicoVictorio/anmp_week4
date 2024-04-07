@@ -9,12 +9,14 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 import com.ubaya.studentapp.R
 import com.ubaya.studentapp.databinding.FragmentStudentDetailBinding
 import com.ubaya.studentapp.databinding.FragmentStudentListBinding
 import com.ubaya.studentapp.model.Student
 import com.ubaya.studentapp.viewmodel.DetailViewModel
 import com.ubaya.studentapp.viewmodel.ListViewModel
+import com.ubaya.studentapp.viewmodel.SubjectViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -35,32 +37,42 @@ class StudentDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val studentId = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentId
+
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        viewModel.fetch()
+        viewModel.fetch(studentId)
 
-        observeViewModel()
-    }
+        viewModel.studentLD.observe(viewLifecycleOwner, Observer { student ->
+            binding.txtId.text = student.id
+            binding.txtNama.text = student.name
+            binding.txtBod.text = student.bod
+            binding.txtPhone.text = student.phone
 
-    fun observeViewModel() {
-        viewModel.studentLD.observe(viewLifecycleOwner, Observer {
-            var student = it
-
-            binding.txtId.setText(student.id)
-            binding.txtNama.setText(student.name)
-            binding.txtBod.setText(student.bod)
-            binding.txtPhone.setText(student.phone)
-
-            binding.btnUpdate?.setOnClickListener {
-                Observable.timer(5, TimeUnit.SECONDS)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe {
-                        Log.d("Messages", "five seconds")
-                        MainActivity.showNotification(student.name.toString(),
-                            "A new notification created",
-                            R.drawable.baseline_person_24)
-                    }
+            student.photoUrl?.let {
+                Picasso.get().load(it).into(binding.imageView)
             }
         })
+        binding.txtId.setText(viewModel.studentLD.value?.id.toString())
+        binding.txtNama.setText(viewModel.studentLD.value?.name.toString())
+        binding.txtBod.setText(viewModel.studentLD.value?.bod)
+        binding.txtPhone.setText(viewModel.studentLD.value?.phone)
+
+        val url = viewModel.studentLD.value?.photoUrl
+        val builder = Picasso.Builder(binding.root.context)
+        builder.listener { picasso, uri, exception ->
+            exception.printStackTrace() }
+        builder.build().load(url).into(binding.imageView)
+
+        binding.btnUpdate?.setOnClickListener {
+            Observable.timer(5, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    Log.d("Messages", "five seconds")
+                    MainActivity.showNotification(viewModel.studentLD.value?.name.toString(),
+                        "A new notification created",
+                        R.drawable.baseline_person_24)
+                }
+        }
     }
 }

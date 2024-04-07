@@ -17,41 +17,29 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher_background" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtId"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Student ID" />
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtNama"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Student Name" />
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtBod"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Student BOD" />
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtPhone"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Student Phone" />
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
         <Button
             android:id="@+id/btnUpdate"

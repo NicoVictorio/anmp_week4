@@ -18,7 +18,11 @@
         android:id="@+id/studentDetailFragment"
         android:name="com.ubaya.studentapp.view.StudentDetailFragment"
         android:label="fragment_student_detail"
-        tools:layout="@layout/fragment_student_detail" />
+        tools:layout="@layout/fragment_student_detail" >
+        <argument
+            android:name="studentId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/subjectListFragment"
         android:name="com.ubaya.studentapp.view.SubjectListFragment"
