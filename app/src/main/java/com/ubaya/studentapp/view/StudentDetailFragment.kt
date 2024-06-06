@@ -22,7 +22,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class StudentDetailFragment : Fragment() {
+class StudentDetailFragment : Fragment(), ButtonUpdateClickListener {
     private lateinit var binding:FragmentStudentDetailBinding
     private lateinit var viewModel: DetailViewModel
 
@@ -31,47 +31,38 @@ class StudentDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentStudentDetailBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.student = Student("", "", "", "", "https://randomuser.me/api/portraits/women/70.jpg")
         val studentId = StudentDetailFragmentArgs.fromBundle(requireArguments()).studentId
 
         viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         viewModel.fetch(studentId)
 
         viewModel.studentLD.observe(viewLifecycleOwner, Observer { student ->
-            binding.txtId.text = student.id
-            binding.txtNama.text = student.name
-            binding.txtBod.text = student.bod
-            binding.txtPhone.text = student.phone
-
-            student.photoUrl?.let {
-                Picasso.get().load(it).into(binding.imageView)
-            }
+            binding.student = student
+            binding.listener = this
         })
-        binding.txtId.setText(viewModel.studentLD.value?.id.toString())
-        binding.txtNama.setText(viewModel.studentLD.value?.name.toString())
-        binding.txtBod.setText(viewModel.studentLD.value?.bod)
-        binding.txtPhone.setText(viewModel.studentLD.value?.phone)
+    }
 
-        val url = viewModel.studentLD.value?.photoUrl
-        val builder = Picasso.Builder(binding.root.context)
-        builder.listener { picasso, uri, exception ->
-            exception.printStackTrace() }
-        builder.build().load(url).into(binding.imageView)
-
-        binding.btnUpdate?.setOnClickListener {
+    override fun onButtonUpdateClick(v: View) {
+        val student = binding.student
+        if (student != null) {
             Observable.timer(5, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("Messages", "five seconds")
-                    MainActivity.showNotification(viewModel.studentLD.value?.name.toString(),
+                    MainActivity.showNotification(
+                        student.name.toString(),
                         "A new notification created",
-                        R.drawable.baseline_person_24)
+                        R.drawable.baseline_person_24
+                    )
                 }
         }
     }
